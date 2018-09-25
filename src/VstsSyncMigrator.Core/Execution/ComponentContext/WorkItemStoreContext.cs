@@ -60,11 +60,7 @@ namespace VstsSyncMigrator.Engine
         public int GetReflectedWorkItemId(WorkItem wi, string reflectedWotkItemIdField)
         {
             string rwiid = wi.Fields[reflectedWotkItemIdField].Value.ToString();
-            if (Regex.IsMatch(rwiid, @"(http(s)?://)?([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?"))
-            {
-                return int.Parse(rwiid.Substring(rwiid.LastIndexOf(@"/") + 1));
-            }
-            return 0;
+            return int.Parse(rwiid.Substring(rwiid.LastIndexOf(@"/") + 1));
         }
 
         public WorkItem FindReflectedWorkItem(WorkItem workItemToFind, string reflectedWotkItemIdField, bool cache)

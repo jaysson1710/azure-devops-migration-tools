@@ -79,7 +79,7 @@ namespace VstsSyncMigrator.Engine
                         if (bits.Count() >= 3)
                         {
                             oldCommitId = $"{bits[2]}";
-                            for (int i = 2; i < bits.Count(); i++)
+                            for (int i = 3; i < bits.Count(); i++)
                             {
                                 oldCommitId += $"%2f{bits[i]}";
                             }
@@ -131,11 +131,12 @@ namespace VstsSyncMigrator.Engine
                                         newLink = new ExternalLink(targetStore.Store.RegisteredLinkTypes[ArtifactLinkIds.Branch],
                                             $"vstfs:///git/ref/{newGitRepo.ProjectReference.Id}%2f{newGitRepo.Id}%2f{oldCommitId}");
                                         break;
-
+                                        
                                     case "Fixed in Commit":
                                         newLink = new ExternalLink(targetStore.Store.RegisteredLinkTypes[ArtifactLinkIds.Commit],
                                             $"vstfs:///git/commit/{newGitRepo.ProjectReference.Id}%2f{newGitRepo.Id}%2f{oldCommitId}");
                                         break;
+                                        
                                     case "Pull Request":
                                         newLink = new ExternalLink(targetStore.Store.RegisteredLinkTypes[ArtifactLinkIds.PullRequest],
                                             $"vstfs:///Git/PullRequestId/{newGitRepo.ProjectReference.Id}%2f{newGitRepo.Id}%2f{oldCommitId}");

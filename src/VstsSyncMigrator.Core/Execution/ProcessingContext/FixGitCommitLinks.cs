@@ -43,7 +43,7 @@ namespace VstsSyncMigrator.Engine
             WorkItemStoreContext targetStore = new WorkItemStoreContext(me.Target, WorkItemStoreFlags.BypassRules);
             TfsQueryContext tfsqc = new TfsQueryContext(targetStore);
             tfsqc.AddParameter("TeamProject", me.Target.Name);
-            tfsqc.Query = string.Format(@"SELECT [System.Id] FROM WorkItems WHERE  [System.TeamProject] = @TeamProject", _config.QueryBit);
+            tfsqc.Query = string.Format(@"SELECT [System.Id] FROM WorkItems WHERE  [System.TeamProject] = @TeamProject {0}", _config.QueryBit);
             WorkItemCollection workitems = tfsqc.Execute();
             Trace.WriteLine(string.Format("Update {0} work items?", workitems.Count));
             //////////////////////////////////////////////////

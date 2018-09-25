@@ -82,10 +82,6 @@ namespace VstsSyncMigrator.Engine
                 else
                 {
                     found = Store.GetWorkItem(idToFind);
-                    if (!(found.Fields[reflectedWotkItemIdField].Value.ToString() == rwiid))
-                    {
-                        found = null;
-                    }
                 }                
             }
             if (found == null) { found = FindReflectedWorkItemByReflectedWorkItemId(ReflectedWorkItemId, reflectedWotkItemIdField); }
